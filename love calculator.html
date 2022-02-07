@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="Love Calculator" />
+<meta name="description" content="Best Love calculator" />
+<meta name="author" content="PARDON FREEZER">
+<title> LOVE CALCULATOR </title>
+<noscript>
+<h2> Turn on Java Script </h2>
+</noscript>
+<style>
+.heading{text-align: center;}.heading a {font-weight: bolder;font-size: 30px;line-height: 35px;color: rgb(98, 7, 182);font-family: Arial}
+body{ text-align: center;}
+input[type=text] { background-color:rgb(253, 229, 229); width: 65%; font-size: 30px;color: rgb(34, 29, 29);font-weight: bold;
+box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.15); height: 45px; padding:3px;border-radius: 30px; font-size: 25px; text-align: center;   }
+input[type=button] { width: 20%; font-size: 20px; cursor: pointer; background: linear-gradient(90deg, #c7081f 0%, #ec5700 100%);
+color: white; font-weight: bolder; height: 40px;transition: all 0.3s;border-radius: 30px;text-align: center;border: none;            }  
+input:hover{opacity: 0.5;} 
+label { font-size: 20px; font-weight: bolder; }
+</style>
+<script>
+function gObj(B){
+var A;
+if(document.all)
+{
+if(typeof B=="string")
+{return document.all(B)}
+else
+{return B.style}
+}
+if(document.getElementById)
+{
+if(typeof B=="string")
+{return document.getElementById(B)}
+else
+{return B.style}
+}
+return null
+}
+function showquickmsg(B,A){
+if(A)
+{B="<font color=red>"+B+"</font>"}
+gObj("coutput").innerHTML=B
+}
+function trimAll(A)
+{
+while(A.substring(0,1)==" ")
+{A=A.substring(1,A.length)}
+while(A.substring(A.length-1,A.length)==" ")
+{A=A.substring(0,A.length-1)}
+return A
+}
+function getNum(A){
+outputNum=0;
+for(i=0;i<A.length;i++)
+{outputNum+=A.charCodeAt(i)}
+return outputNum
+}
+function calc(){
+cnameone=trimAll(gObj("cnameone").value);
+cnametwo=trimAll(gObj("cnametwo").value);
+if(cnameone.length<1)
+{showquickmsg("<h1>Please Enter Your Name</h1>",true);return }
+else
+{
+if(cnametwo.length<1)
+{showquickmsg("<h1>Please Enter your crush name</h1>",true);return }
+}
+cnameone=cnameone.toLowerCase();
+cnametwo=cnametwo.toLowerCase();
+totalNum=getNum(cnameone)*getNum(cnametwo);
+finalScore=totalNum%100;
+finalScore="<h1><i><font color=green><b>"+cnameone+" & "+cnametwo+" </b></font><br>Your Love Percentage is<br><font color=rgba(23, 235, 23, 0.904)><b>" + finalScore+"%</b></font></i></h1>";
+showquickmsg(finalScore,false)};
+</script>
+</head>
+<body>
+<br>
+<div class="heading">
+<a>Love Calulator</a>
+</div><br>
+<form>
+<div> 
+<input size="50" type="text" name="cnameone" id="cnameone" placeholder="Your name"></div><br>
+<div>
+<input size="50" type="text" name="cnametwo" id="cnametwo" placeholder="Your crush"></div><br>
+<br>
+<div>
+<input type="button" value="Calculate" onclick="calc()" />
+</div>
+<div id="coutput" class="blocks" ></div>
+</form>
+<p><I> &copyWalker-Sayers 2022</I></p>
+</body>
+</html>
